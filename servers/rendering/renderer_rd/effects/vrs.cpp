@@ -95,6 +95,11 @@ Size2i VRS::get_vrs_texture_size(const Size2i p_base_size) const {
 	int32_t texel_width = RD::get_singleton()->limit_get(RD::LIMIT_VRS_TEXEL_WIDTH);
 	int32_t texel_height = RD::get_singleton()->limit_get(RD::LIMIT_VRS_TEXEL_HEIGHT);
 
+	if (texel_width == 0 || texel_height == 0) {
+		texel_width = 16;
+		texel_height = 16;
+	}
+
 	int width = p_base_size.x / texel_width;
 	if (p_base_size.x % texel_width != 0) {
 		width++;
